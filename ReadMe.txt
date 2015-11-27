@@ -8,12 +8,13 @@ The PlayFile project provides example code for simple audio file read and playba
 ===========================================================================
 BUILD REQUIREMENTS:
 
-Mac OS X v10.6 or later
+Mac OS X v10.7 or later
+Xcode v4.3 or later
 
 ===========================================================================
 RUNTIME REQUIREMENTS:
 
-Mac OS X v10.6 or later
+Mac OS X v10.7 or later
 
 ===========================================================================
 PACKAGING LIST:

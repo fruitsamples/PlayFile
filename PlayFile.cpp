@@ -1,4 +1,4 @@
-/*	Copyright © 2007 Apple Inc. All Rights Reserved.
+/*	Copyright ï¿½ 2007 Apple Inc. All Rights Reserved.
 	
 	Disclaimer: IMPORTANT:  This Apple software is supplied to you by 
 			Apple Inc. ("Apple") in consideration of your agreement to the
@@ -63,9 +63,11 @@ int main (int argc, char * const argv[])
 	const char* inputFile = argv[1];
 
 	CFURLRef theURL = CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, (UInt8*)inputFile, strlen(inputFile), false);
-
+    XThrowIfError (!theURL, "CFURLCreateFromFileSystemRepresentation");
 	
-	XThrowIfError (AudioFileOpenURL (theURL, kAudioFileReadPermission, 0, &audioFile), "AudioFileOpenURL");
+    OSStatus err = AudioFileOpenURL (theURL, kAudioFileReadPermission, 0, &audioFile);
+    CFRelease(theURL);
+	XThrowIfError (err, "AudioFileOpenURL");
 			
 			// get the number of channels of the file
 	CAStreamBasicDescription fileFormat;
